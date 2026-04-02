@@ -1,0 +1,185 @@
+@Courses_Management_System_HostAddress = http://localhost:5295
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBsb2NhbGhvc3QiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGxvY2FsaG9zdCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzc1MTY1NDQxLCJpc3MiOiJDb3Vyc2VzTWFuYWdlbWVudFN5c3RlbSIsImF1ZCI6IkNvdXJzZXNNYW5hZ2VtZW50U3lzdGVtVXNlcnMifQ.1zaR2lwPj30lbgwapAGC2m2VCNdCUKn0S0DqzfE6Ocs
+### 1. LOGIN - Get JWT Token
+POST {{Courses_Management_System_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@localhost",
+  "password": "Admin@123"
+}
+
+###
+
+### 2. GET All Students
+GET {{Courses_Management_System_HostAddress}}/api/students
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 3. GET Student by ID
+GET {{Courses_Management_System_HostAddress}}/api/students/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 4. CREATE New Student
+POST {{Courses_Management_System_HostAddress}}/api/students
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Mohamed Amr",
+  "email": "mohamed.amr@student.local"
+}
+
+###
+
+### 5. UPDATE Student
+PUT {{Courses_Management_System_HostAddress}}/api/students/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Almohamady",
+  "email": "Almohamady@student.local"
+}
+
+###
+
+### 6. DELETE Student
+DELETE {{Courses_Management_System_HostAddress}}/api/students/4
+Authorization: Bearer {{token}}
+
+###
+
+### 7. GET All Courses
+GET {{Courses_Management_System_HostAddress}}/api/courses
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 8. GET Course by ID
+GET {{Courses_Management_System_HostAddress}}/api/courses/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 9. CREATE New Course
+POST {{Courses_Management_System_HostAddress}}/api/courses
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Advanced C# Programming",
+  "instructorId": 1
+}
+
+###
+
+### 10. UPDATE Course
+PUT {{Courses_Management_System_HostAddress}}/api/courses/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Intro to C# - Updated",
+  "instructorId": 1
+}
+
+###
+
+### 11. DELETE Course
+DELETE {{Courses_Management_System_HostAddress}}/api/courses/4
+Authorization: Bearer {{token}}
+
+###
+
+### 12. GET All Instructors
+GET {{Courses_Management_System_HostAddress}}/api/instructors
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 13. GET Instructor by ID
+GET {{Courses_Management_System_HostAddress}}/api/instructors/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 14. CREATE New Instructor
+POST {{Courses_Management_System_HostAddress}}/api/instructors
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Grace Lee",
+  "email": "grace@localhost",
+  "bio": "Expert in Cloud Computing and AWS"
+}
+
+###
+
+### 15. UPDATE Instructor
+PUT {{Courses_Management_System_HostAddress}}/api/instructors/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson Updated",
+  "email": "alice.updated@localhost",
+  "bio": "Expert in Mathematics, Data Science, and AI"
+}
+
+###
+
+### 16. DELETE Instructor
+DELETE {{Courses_Management_System_HostAddress}}/api/instructors/3
+Authorization: Bearer {{token}}
+
+###
+
+### 17. ENROLL Student in Course
+POST {{Courses_Management_System_HostAddress}}/api/students/2/enroll/1
+Authorization: Bearer {{token}}
+
+###
+
+### 18. DE-ENROLL Student from Course
+POST {{Courses_Management_System_HostAddress}}/api/students/2/deenroll/1
+Authorization: Bearer {{token}}
+
+###
+
+### 19. GET students enrolled in course
+GET {{Courses_Management_System_HostAddress}}/api/courses/1/students
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 20. GET course instructor
+GET {{Courses_Management_System_HostAddress}}/api/courses/1/instructor
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 21. GET student 2 enrolled courses
+GET {{Courses_Management_System_HostAddress}}/api/students/2/courses
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### 22. Test Unauthorized Access (no token)
+GET {{Courses_Management_System_HostAddress}}/api/students
+Accept: application/json
+
+###
